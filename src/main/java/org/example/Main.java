@@ -1,19 +1,31 @@
 package org.example;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.time.Duration;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\driver\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.get("https://demoqa.com/text-box");
+        driver.manage().window().maximize();
+        WebElement userNameInput = driver.findElement(By.xpath("//input[@id='userName']"));
+        userNameInput.sendKeys("Pavael");
+        WebElement userEmailInput = driver.findElement(By.xpath("//input[@id='userEmail']"));
+        WebElement userAddressInput = driver.findElement(By.xpath("//textarea[@id='currentAddress']"));
+        WebElement userAddress1Input = driver.findElement(By.xpath("//textarea[@id='permanentAddress']"));
+        userEmailInput.sendKeys("Pavael@ya.ru");
+        userAddressInput.sendKeys("Kursk");
+        userAddress1Input.sendKeys("Kursk1");
+        WebElement Submit = driver.findElement(By.xpath("//button[@id='submit']"));
+        Submit.click();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
     }
-}
+    }
