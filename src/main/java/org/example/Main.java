@@ -23,9 +23,8 @@ public class Main {
         WebElement userAddress1Input = driver.findElement(By.xpath("//textarea[@id='permanentAddress']"));
         userEmailInput.sendKeys("Pavael@ya.ru");
         userAddressInput.sendKeys("Kursk");
-        userAddress1Input.sendKeys("Kursk1");
+        userAddress1Input.sendKeys("Kursk");
         WebElement Submit = driver.findElement(By.xpath("//button[@id='submit']"));
         Submit.click();
-
     }
     }
